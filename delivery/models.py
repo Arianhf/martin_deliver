@@ -8,6 +8,23 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 
+class DeliveryStatus:
+    ON_WAY = "on_way"       # delivery is on the way (collection now can see the delivery)
+    ACCEPTED = "accepted"   # delivery accepted by a courier
+    RECEIVED = "received"   # delivery received by courier
+    REJECTED = "rejected"   # delivery has not been accepted by any courier in time
+    CANCELED = "canceled"   # delivery canceled by collection
+    DELIVERED = "delivered" # Package received by receiver.
+
+    STATUSES = (
+        (DELIVERED, _("Delivered")),
+        (ON_WAY, _("On the way")),
+        (RECEIVED, _("received")),
+        (ACCEPTED, _("Accepted")),
+        (REJECTED, _("Rejected")),
+        (CANCELED, _("Canceled")),
+    )
+
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
     updated_at = models.DateTimeField(auto_now_add=True, verbose_name=_("updated at"))
@@ -45,7 +62,10 @@ class Courier(User):
 
 
 class Collection(User):
-    pass
+    name = models.CharField(
+        max_length=255,
+        verbose_name=_("sender name")
+    )
 
 class Package(SluggedModel):
     sender = models.ForeignKey(
@@ -113,4 +133,11 @@ class Package(SluggedModel):
     )
     destination_address = models.TextField(
         verbose_name=_("address"),
+    )
+    status = models.CharField(
+        max_length=10,
+        choices=DeliveryStatus.STATUSES,
+        default=DeliveryStatus.PENDING,
+        blank=False,
+        verbose_name=_("status"),
     )
