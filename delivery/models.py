@@ -66,6 +66,10 @@ class Collection(User):
         max_length=255,
         verbose_name=_("sender name")
     )
+    webhook_link = models.CharField(
+        max_length=255,
+        verbose_name=_("webhook address")
+    )
 
 class Package(SluggedModel):
     sender = models.ForeignKey(
