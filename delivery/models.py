@@ -9,12 +9,13 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 
 class DeliveryStatus:
-    ON_WAY = "on_way"       # delivery is on the way (collection now can see the delivery)
-    ACCEPTED = "accepted"   # delivery accepted by a courier
-    RECEIVED = "received"   # delivery received by courier
-    REJECTED = "rejected"   # delivery has not been accepted by any courier in time
-    CANCELED = "canceled"   # delivery canceled by collection
+    ON_WAY = "on_way"       # delivery is on the way (collection now can see the delivery).
+    ACCEPTED = "accepted"   # delivery accepted by a courier.
+    RECEIVED = "received"   # delivery received by courier.
+    REJECTED = "rejected"   # delivery has not been accepted by any courier in time.
+    CANCELED = "canceled"   # delivery canceled by collection.
     DELIVERED = "delivered" # Package received by receiver.
+    PENDING = "pending"     # delivery order just created.
 
     STATUSES = (
         (DELIVERED, _("Delivered")),
@@ -23,6 +24,7 @@ class DeliveryStatus:
         (ACCEPTED, _("Accepted")),
         (REJECTED, _("Rejected")),
         (CANCELED, _("Canceled")),
+        (PENDING, _("Pending"))
     )
 
 class BaseModel(models.Model):
