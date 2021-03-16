@@ -1,0 +1,1422 @@
+{
+	"info": {
+		"_postman_id": "b6ac4df4-2e91-4a3a-a295-8965c77c648e",
+		"name": "itoll",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "a.b@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test12345",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/api/token/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "b.a@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "test12345",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/token/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"token",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 15:24:53 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "438"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNTk5NDY5MywianRpIjoiMzE0YTM5YTk4YzM3NDllNmE4YTQ4YmYzYmRhOWNiODYiLCJ1c2VyX2lkIjoxfQ.Wgm4BoywoyLjKs-zkRtM9ALdHbaP1nihiPrnEgWYRc4\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1OTExODkzLCJqdGkiOiJjM2I0ZTQ1ZGY2NGY0YjczODZiYTJmNmE0ZWI1MWI1YSIsInVzZXJfaWQiOjF9.k7Vv4pOqoviDYSZP9mANXV8spxcVGo4yBtwOpQ7WySQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "CourierSignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone_number",
+									"value": "09121111111",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "a.b@test.com",
+									"description": "q",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "ahmad",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "mahmoud",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test12345",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/delivery/courier/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"courier",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "CourierSignUp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "phone_number",
+											"value": "09121111111",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "a.b@test.com",
+											"description": "q",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "ahmad",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "mahmoud",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "test12345",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/delivery/courier/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"courier",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 13:45:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "543"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"phone_number\": \"09121111111\",\n    \"email\": \"a.b@test.com\",\n    \"first_name\": \"ahmad\",\n    \"last_name\": \"mahmoud\",\n    \"token\": {\n        \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNTk4ODczMCwianRpIjoiNjNjNzAwYjhhNGQ3NGE0NDgwYTI5MjIxNGUyY2E1MjUiLCJ1c2VyX2lkIjoyfQ.Q9gxBBfCvmnh5TmmUgpithVjPmcsvmqvNEYpBPXj43U\",\n        \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1OTAyNjMwLCJqdGkiOiI2MDVjMTg3OTA5ZmM0ZGRkOWMxYTM5NTI4NjU1NGYxNyIsInVzZXJfaWQiOjJ9.sZxdLINdr0u7quPFum9S_QcqEM0c-j1k6cWH_OQq8oQ\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "CollectionSignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "bbbb.a@test.com",
+									"description": "q",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test12345",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "webhook_link",
+									"value": "http://www.test.ir/webhook/",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/delivery/collection/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"collection",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "CollectionSignUp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "b.a@test.com",
+											"description": "q",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "test12345",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "itoll",
+											"type": "text"
+										},
+										{
+											"key": "webhook_link",
+											"value": "http://www.itoll.ir/webhook/",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/delivery/collection/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"collection",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 10:19:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "532"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"b.a@test.com\",\n    \"name\": \"itoll\",\n    \"webhook_link\": \"http://www.itoll.ir/webhook/\",\n    \"token\": {\n        \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNTk3NjM0MSwianRpIjoiNWQ3ZjA0YzBhODhhNDdhMzk2NTRjYjAyMzdmODNlMGEiLCJ1c2VyX2lkIjoxfQ.unqHhjTRyhzbe3e8XEek_lbzHzGjw8jn9t_8QE_Aklc\",\n        \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1ODkwMjQxLCJqdGkiOiI3NGJkMTc4NzA5ZWI0MjU5ODBkNjBlOGU5YWNkZmNlMyIsInVzZXJfaWQiOjF9.frFFpgKxeAnKPafCyHwZE9UwOSGQ2aMwXUtRKPQH0K4\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Courier",
+			"item": [
+				{
+					"name": "Packages List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/delivery/package/list/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"package",
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Package",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{courier}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/delivery/package/{{package_slug}}/accept/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"package",
+								"{{package_slug}}",
+								"accept",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Accept Package",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{courier}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/delivery/package/{{package_slug}}/accept/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"package",
+										"{{package_slug}}",
+										"accept",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 18:02:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, PATCH, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "438"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sender_phone_number\": \"09121111111\",\n    \"sender_name\": \"ahmad\",\n    \"receiver_phone_number\": \"09122222222\",\n    \"receiver_name\": \"ali\",\n    \"origin_long\": \"23.544444\",\n    \"origin_lat\": \"25.344123\",\n    \"origin_address\": \"tehran iran #5\",\n    \"destination_long\": \"66.235084\",\n    \"destination_lat\": \"92.971334\",\n    \"destination_address\": \"isfahan iran #6\",\n    \"slug\": \"JYxatLEf\",\n    \"sender\": {\n        \"email\": \"b.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    },\n    \"status\": \"accepted\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Receive Package",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{courier}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/delivery/package/{{package_slug}}/receive/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"package",
+								"{{package_slug}}",
+								"receive",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Receive Package",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{courier}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/delivery/package/{{package_slug}}/receive/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"package",
+										"{{package_slug}}",
+										"receive",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 20:31:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, PATCH, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "438"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sender_phone_number\": \"09121111111\",\n    \"sender_name\": \"ahmad\",\n    \"receiver_phone_number\": \"09122222222\",\n    \"receiver_name\": \"ali\",\n    \"origin_long\": \"23.544444\",\n    \"origin_lat\": \"25.344123\",\n    \"origin_address\": \"tehran iran #5\",\n    \"destination_long\": \"66.235084\",\n    \"destination_lat\": \"92.971334\",\n    \"destination_address\": \"isfahan iran #6\",\n    \"slug\": \"JYxatLEf\",\n    \"sender\": {\n        \"email\": \"b.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    },\n    \"status\": \"received\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Package on way",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{courier}}"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/delivery/package/{{package_slug}}/on-way/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"package",
+								"{{package_slug}}",
+								"on-way",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Package on way",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{courier}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/delivery/package/{{package_slug}}/on-way/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"package",
+										"{{package_slug}}",
+										"on-way",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 20:33:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, PATCH, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "436"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sender_phone_number\": \"09121111111\",\n    \"sender_name\": \"ahmad\",\n    \"receiver_phone_number\": \"09122222222\",\n    \"receiver_name\": \"ali\",\n    \"origin_long\": \"23.544444\",\n    \"origin_lat\": \"25.344123\",\n    \"origin_address\": \"tehran iran #5\",\n    \"destination_long\": \"66.235084\",\n    \"destination_lat\": \"92.971334\",\n    \"destination_address\": \"isfahan iran #6\",\n    \"slug\": \"JYxatLEf\",\n    \"sender\": {\n        \"email\": \"b.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    },\n    \"status\": \"on_way\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Package Delivered",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{courier}}"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/delivery/package/{{package_slug}}/delivered/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"package",
+								"{{package_slug}}",
+								"delivered",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Package Delivered",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "{{courier}}"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/delivery/package/{{package_slug}}/delivered/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"package",
+										"{{package_slug}}",
+										"delivered",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 20:35:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, PATCH, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "439"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sender_phone_number\": \"09121111111\",\n    \"sender_name\": \"ahmad\",\n    \"receiver_phone_number\": \"09122222222\",\n    \"receiver_name\": \"ali\",\n    \"origin_long\": \"23.544444\",\n    \"origin_lat\": \"25.344123\",\n    \"origin_address\": \"tehran iran #5\",\n    \"destination_long\": \"66.235084\",\n    \"destination_lat\": \"92.971334\",\n    \"destination_address\": \"isfahan iran #6\",\n    \"slug\": \"JYxatLEf\",\n    \"sender\": {\n        \"email\": \"b.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    },\n    \"status\": \"delivered\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Collection",
+			"item": [
+				{
+					"name": "CreatePackage",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1OTExODkzLCJqdGkiOiJjM2I0ZTQ1ZGY2NGY0YjczODZiYTJmNmE0ZWI1MWI1YSIsInVzZXJfaWQiOjF9.k7Vv4pOqoviDYSZP9mANXV8spxcVGo4yBtwOpQ7WySQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sender_phone_number",
+									"value": "09121111111",
+									"type": "text"
+								},
+								{
+									"key": "sender_name",
+									"value": "ahmad",
+									"type": "text"
+								},
+								{
+									"key": "receiver_phone_number",
+									"value": "09122222222",
+									"type": "text"
+								},
+								{
+									"key": "receiver_name",
+									"value": "ali",
+									"type": "text"
+								},
+								{
+									"key": "origin_long",
+									"value": "23.544444",
+									"type": "text"
+								},
+								{
+									"key": "origin_lat",
+									"value": "25.344123",
+									"type": "text"
+								},
+								{
+									"key": "destination_long",
+									"value": "66.235084",
+									"type": "text"
+								},
+								{
+									"key": "destination_lat",
+									"value": "92.971334",
+									"type": "text"
+								},
+								{
+									"key": "origin_address",
+									"value": "tehran iran #5",
+									"type": "text"
+								},
+								{
+									"key": "destination_address",
+									"value": "isfahan iran #6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/delivery/package/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"package",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "CreatePackage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1OTExODkzLCJqdGkiOiJjM2I0ZTQ1ZGY2NGY0YjczODZiYTJmNmE0ZWI1MWI1YSIsInVzZXJfaWQiOjF9.k7Vv4pOqoviDYSZP9mANXV8spxcVGo4yBtwOpQ7WySQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sender_phone_number",
+											"value": "09121111111",
+											"type": "text"
+										},
+										{
+											"key": "sender_name",
+											"value": "ahmad",
+											"type": "text"
+										},
+										{
+											"key": "receiver_phone_number",
+											"value": "09122222222",
+											"type": "text"
+										},
+										{
+											"key": "receiver_name",
+											"value": "ali",
+											"type": "text"
+										},
+										{
+											"key": "origin_long",
+											"value": "23.544444",
+											"type": "text"
+										},
+										{
+											"key": "origin_lat",
+											"value": "25.344123",
+											"type": "text"
+										},
+										{
+											"key": "destination_long",
+											"value": "66.235084",
+											"type": "text"
+										},
+										{
+											"key": "destination_lat",
+											"value": "92.971334",
+											"type": "text"
+										},
+										{
+											"key": "origin_address",
+											"value": "tehran iran #5",
+											"type": "text"
+										},
+										{
+											"key": "destination_address",
+											"value": "isfahan iran #6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/delivery/package/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"package",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 15:59:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "418"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sender_phone_number\": \"09121111111\",\n    \"sender_name\": \"ahmad\",\n    \"receiver_phone_number\": \"09122222222\",\n    \"receiver_name\": \"ali\",\n    \"origin_long\": \"23.544444\",\n    \"origin_lat\": \"25.344123\",\n    \"origin_address\": \"tehran iran #5\",\n    \"destination_long\": \"66.235084\",\n    \"destination_lat\": \"92.971334\",\n    \"destination_address\": \"isfahan iran #6\",\n    \"slug\": \"2hAZ1uTM\",\n    \"sender\": {\n        \"email\": \"b.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel Package",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/delivery/package/{{package_slug}}/cancel/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"package",
+								"{{package_slug}}",
+								"cancel",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "CreatePackage Copy",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/delivery/package/{{package_slug}}/cancel/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"delivery",
+										"package",
+										"{{package_slug}}",
+										"cancel",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Mar 2021 17:30:00 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.8"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, PATCH, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "438"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sender_phone_number\": \"09121111111\",\n    \"sender_name\": \"ahmad\",\n    \"receiver_phone_number\": \"09122222222\",\n    \"receiver_name\": \"ali\",\n    \"origin_long\": \"23.544444\",\n    \"origin_lat\": \"25.344123\",\n    \"origin_address\": \"tehran iran #5\",\n    \"destination_long\": \"66.235084\",\n    \"destination_lat\": \"92.971334\",\n    \"destination_address\": \"isfahan iran #6\",\n    \"slug\": \"2hAZ1uTM\",\n    \"sender\": {\n        \"email\": \"b.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    },\n    \"status\": \"canceled\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "CollectionList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/delivery/collection/list/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"delivery",
+						"collection",
+						"list",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CollectionList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/delivery/collection/list/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"collection",
+								"list",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Mar 2021 13:50:25 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "174"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"email\": \"b.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    },\n    {\n        \"email\": \"bb.a@test.com\",\n        \"name\": \"itoll\",\n        \"webhook_link\": \"http://www.itoll.ir/webhook/\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "CourierList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/delivery/courier/list/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"delivery",
+						"courier",
+						"list",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "user signup",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone_number",
+									"value": "09121111111",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "a.b@test.com",
+									"description": "q",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "ahmad",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "mahmoud",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test12345",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/delivery/courier/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"courier",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Mar 2021 09:43:38 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "543"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"phone_number\": \"09121111111\",\n    \"email\": \"a.b@test.com\",\n    \"first_name\": \"ahmad\",\n    \"last_name\": \"mahmoud\",\n    \"token\": {\n        \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNTk3NDIxOCwianRpIjoiMmY1M2I0YTI2NDU0NDZlZjk2NGVlYjg3OThkZDY2ZDUiLCJ1c2VyX2lkIjoyfQ.5DSwnlKfBEtlUzajRHUV9uy1ycxCj5UDpZ3bIFNF7p0\",\n        \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1ODg4MTE4LCJqdGkiOiJmNDAzMGMxYjY2YjI0YzBkOGQ5Njk5ZjdjYTI4MWRiYiIsInVzZXJfaWQiOjJ9.fWdrHf4rJa_9_0iAWy1KIeUPKNM1F__tWKpgjS--qy0\"\n    }\n}"
+				},
+				{
+					"name": "CourierList",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/delivery/courier/list/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"delivery",
+								"courier",
+								"list",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 16 Mar 2021 13:46:22 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "98"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"phone_number\": \"09121111111\",\n        \"email\": \"a.b@test.com\",\n        \"first_name\": \"ahmad\",\n        \"last_name\": \"mahmoud\"\n    }\n]"
+				}
+			]
+		}
+	]
+}
