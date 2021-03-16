@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from martin_deliver.delivery.models import Courier, Collection, Package
+from .models import Courier, Collection, Package, DeliveryStatus
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -222,4 +222,38 @@ class PackageCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data["sender"] = Collection.objects.get(email=get_user(self).email)
         return super(PackageCreateSerializer, self).create(validated_data)
+
+class PackageSerializer(serializers.ModelSerializer):
+    sender = CollectionSerializer(required=False)
+    
+    class Meta:
+        model=Package
+        fields = (
+            "sender_phone_number",
+            "sender_name",
+            "receiver_phone_number",
+            "receiver_name",
+            "origin_long",
+            "origin_lat",
+            "origin_address",
+            "destination_long",
+            "destination_lat",
+            "destination_address",
+            "slug",
+            "sender",
+            "status",
+        )
+
+    def validate(self, data):
+        if  data['status'] == DeliveryStatus.CANCELED and self.instance.status == DeliveryStatus.CANCELED:
+            raise serializers.ValidationError(
+                {"status": _("Delivery already canceled.")}
+            )
+        
+        elif  data['status'] == DeliveryStatus.CANCELED and not self.instance.status == DeliveryStatus.PENDING:
+            raise serializers.ValidationError(
+                {"status": _("Can't cancel a delivery that is active.")}
+            )
+        
+        return data
 
