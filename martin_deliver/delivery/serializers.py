@@ -200,6 +200,7 @@ class CollectionSerializer(serializers.ModelSerializer):
 
 class PackageCreateSerializer(serializers.ModelSerializer):
     sender = CollectionSerializer(required=False)
+    status = serializers.ReadOnlyField()
     class Meta:
         model=Package
         fields = (
@@ -215,6 +216,7 @@ class PackageCreateSerializer(serializers.ModelSerializer):
             "destination_address",
             "slug",
             "sender",
+            "status",
         )
 
     def create(self, validated_data):
