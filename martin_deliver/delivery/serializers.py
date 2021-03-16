@@ -10,6 +10,7 @@ import random
 import string
 from rest_framework_simplejwt.serializers import TokenObtainSerializer
 from rest_framework.fields import CurrentUserDefault
+import requests
 
 def random_username():
     return "".join(
@@ -25,6 +26,13 @@ def get_user(self):
     if request and hasattr(request, "user"):
         user = request.user
     return user
+
+def send_data_to_webhook(package_slug, status, webhook):
+    payload = {
+        "package_id":package_slug,
+        "package_status":status
+    }
+    r = requests.post(webhook, data=payload)
 
 ########### EMAIL AUTH WITH JWT ################
 
@@ -249,11 +257,27 @@ class PackageSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 {"status": _("Delivery already canceled.")}
             )
-        
         elif  data['status'] == DeliveryStatus.CANCELED and not self.instance.status == DeliveryStatus.PENDING:
             raise serializers.ValidationError(
                 {"status": _("Can't cancel a delivery that is active.")}
             )
-        
+        elif  data['status'] == DeliveryStatus.ACCEPTED and not self.instance.status == DeliveryStatus.PENDING:
+            raise serializers.ValidationError(
+                {"status": _("Can't accept a delivery that is not pending.")}
+            )
+        elif  data['status'] == DeliveryStatus.RECEIVED and not self.instance.status == DeliveryStatus.ACCEPTED:
+            raise serializers.ValidationError(
+                {"status": _("Can't receive a delivery that is not accepted.")}
+            )
+        elif  data['status'] == DeliveryStatus.ON_WAY and not self.instance.status == DeliveryStatus.RECEIVED:
+            raise serializers.ValidationError(
+                {"status": _("Can't move a package you have not received.")}
+            )
+        elif  data['status'] == DeliveryStatus.DELIVERED and not self.instance.status == DeliveryStatus.ON_WAY:
+            raise serializers.ValidationError(
+                {"status": _("Can't deliver a package you have not moved.")}
+            )
+
+        send_data_to_webhook(self.instance.slug, data['status'], self.instance.sender.webhook_link)
         return data
 
