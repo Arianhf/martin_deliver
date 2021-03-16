@@ -1,14 +1,15 @@
-from .models import Courier, Collection, Package
+from .models import Courier, Collection, Package, DeliveryStatus
 from .serializers import (
     CourierSignupSerializer,
     CourierSerializer,
     CollectionSerializer,
     CollectionSignupSerializer,
     PackageCreateSerializer,
-    CustomTokenObtainPairSerializer
+    CustomTokenObtainPairSerializer,
+    PackageSerializer
 )
 from rest_framework import status, permissions, mixins, generics
-from .permissions import IsCollection
+from .permissions import IsCollection, IsOwner
 
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -57,3 +58,12 @@ class PackageCreate(mixins.CreateModelMixin, generics.GenericAPIView):
         return self.create(request, *args, **kwargs)
 
     
+class PackageCancel(generics.UpdateAPIView):
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
+    lookup_field = "slug" 
+    permission_classes = [IsCollection, IsOwner]
+
+    def update(self, request, *args, **kwargs):
+        request.data['status'] = DeliveryStatus.CANCELED
+        return super().update(request, *args, **kwargs)
