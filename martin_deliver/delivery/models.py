@@ -60,17 +60,32 @@ class SluggedModel(BaseModel):
     edit_link.short_description = _("edit")
 
 class Courier(User):
-    pass
+    phone_regex = RegexValidator(
+        regex=r"^09\d{9}$",
+        message=_("phone number must be entered in the format: '09---------'."),
+    )
+    phone_number = models.CharField(
+        max_length=16,
+        validators=[phone_regex],
+        verbose_name=_("phone number"),
+        blank=False,
+        null=False,
+        unique=True
+    )
 
 
 class Collection(User):
     name = models.CharField(
         max_length=255,
-        verbose_name=_("sender name")
+        verbose_name=_("sender name"),
+        blank=False,
+        null=False,
     )
     webhook_link = models.CharField(
         max_length=255,
-        verbose_name=_("webhook address")
+        verbose_name=_("webhook address"),
+        blank=False,
+        null=False,
     )
 
 class Package(SluggedModel):
@@ -80,6 +95,8 @@ class Package(SluggedModel):
         verbose_name=_("sender"),
         help_text=_("sender"),
         db_index=True,
+        null=True,
+        blank=False,
     )
     courier = models.ForeignKey(
         "Courier",
@@ -87,6 +104,8 @@ class Package(SluggedModel):
         verbose_name=_("sender"),
         help_text=_("sender"),
         db_index=True,
+        null=True,
+        blank=True,
     )
     phone_regex = RegexValidator(
         regex=r"^09\d{9}$",
@@ -96,30 +115,40 @@ class Package(SluggedModel):
         max_length=16,
         validators=[phone_regex],
         verbose_name=_("sender phone number"),
+        blank=False,
+        null=False,
     )
     sender_name = models.CharField(
         max_length=255,
-        verbose_name=_("sender name")
+        verbose_name=_("sender name"),
+        blank=False,
+        null=False,
     )
     receiver_phone_number = models.CharField(
         max_length=16,
         validators=[phone_regex],
         verbose_name=_("receiver phone number"),
+        blank=False,
+        null=False,
     )
     receiver_name = models.CharField(
         max_length=255,
-        verbose_name=_("receiver name")
+        verbose_name=_("receiver name"),
+        blank=False,
+        null=False,
     )
     origin_long = models.DecimalField(
         max_digits=9,
         decimal_places=6,
         blank=False,
+        null=False,
         verbose_name=_("origin longtitude")
     )
     origin_lat = models.DecimalField(
         max_digits=9,
         decimal_places=6,
         blank=False,
+        null=False,
         verbose_name=_("origin latitude")
     )
     origin_address = models.TextField(
