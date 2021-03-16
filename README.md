@@ -1,4 +1,4 @@
-#steps to run
+**steps to run**
 1. git clone git@github.com:Arianhf/martin_deliver.git
 2. cd martin_deliver
 3. pip install pipenv
