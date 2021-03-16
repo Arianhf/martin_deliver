@@ -1,9 +1,9 @@
 from rest_framework.permissions import BasePermission
-from .models import Collection, Package
+from .models import Collection, Package, Courier
 
 class IsCollection(BasePermission):
     """
-    The request is authenticated as a user, or is a read-only request.
+    The request is authenticated as a user, and is a collection.
     """
 
     def has_permission(self, request, view):
@@ -13,8 +13,22 @@ class IsCollection(BasePermission):
             collection = None
         return bool(
             request.user and
-            request.user.is_authenticated and
             collection
+        )
+
+class IsCourier(BasePermission):
+    """
+    The request is authenticated as a user, or is a read-only request.
+    """
+
+    def has_permission(self, request, view):
+        try:
+            courier = Courier.objects.get(email=request.user.email)
+        except:
+            courier = None
+        return bool(
+            request.user and
+            courier
         )
 
 class IsOwner(BasePermission):
