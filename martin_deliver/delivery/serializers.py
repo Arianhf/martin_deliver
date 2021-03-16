@@ -40,12 +40,14 @@ class CourierSignupSerializer(serializers.ModelSerializer):
             "last_name",
             "password",
             "token",
+            "username"
         )
         extra_kwargs = {
             "first_name": {"required": True},
             "last_name": {"required": True},
             "email": {"required": True},
         }
+
 
     def validate_password(self, data):
         # get the password from the data
@@ -117,7 +119,7 @@ class CollectionSignupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Collection
-        fields = ("email", "password", "name", "webhook_link", "token")
+        fields = ("email", "password", "name", "webhook_link", "token", "username")
 
     def validate_password(self, data):
         # get the password from the data
