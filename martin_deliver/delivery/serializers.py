@@ -9,6 +9,16 @@ from rest_framework_simplejwt.tokens import RefreshToken
 import random
 import string
 
+
+def random_username():
+    return "".join(
+        random.SystemRandom().choice(
+            string.ascii_lowercase + string.digits + string.ascii_uppercase
+        )
+        for _ in range(12)
+    )
+
+
 class CourierSignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True,
@@ -17,6 +27,9 @@ class CourierSignupSerializer(serializers.ModelSerializer):
         style={"input_type": "password", "placeholder": "Password"},
     )
     token = serializers.SerializerMethodField()
+    username = serializers.CharField(
+        write_only=True, required=False, help_text="random generated username"
+    )
 
     class Meta:
         model = Courier
@@ -26,12 +39,12 @@ class CourierSignupSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "password",
-            "token"
+            "token",
         )
         extra_kwargs = {
-            'first_name': {'required': True},
-            'last_name': {'required': True},
-            'email': {'required': True}
+            "first_name": {"required": True},
+            "last_name": {"required": True},
+            "email": {"required": True},
         }
 
     def validate_password(self, data):
@@ -67,6 +80,7 @@ class CourierSignupSerializer(serializers.ModelSerializer):
         return email
 
     def create(self, validated_data):
+        validated_data["username"] = random_username()
         validated_data["password"] = make_password(validated_data.get("password"))
         return super(CourierSignupSerializer, self).create(validated_data)
 
@@ -74,14 +88,11 @@ class CourierSignupSerializer(serializers.ModelSerializer):
         tokens = RefreshToken.for_user(user)
         refresh = str(tokens)
         access = str(tokens.access_token)
-        data = {
-            "refresh": refresh,
-            "access": access
-        }
+        data = {"refresh": refresh, "access": access}
         return data
 
-class CourierSerializer(serializers.ModelSerializer):
 
+class CourierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Courier
         fields = (
@@ -99,20 +110,14 @@ class CollectionSignupSerializer(serializers.ModelSerializer):
         help_text="should not be a common password, can't be only numbers, should be at least 8 characters.",
         style={"input_type": "password", "placeholder": "Password"},
     )
+    token = serializers.SerializerMethodField()
     username = serializers.CharField(
         write_only=True, required=False, help_text="random generated username"
     )
-    token = serializers.SerializerMethodField()
 
     class Meta:
         model = Collection
-        fields = (
-            "phone_number",
-            "email",
-            "password",
-            "name",
-            "webhook_link",
-        )
+        fields = ("email", "password", "name", "webhook_link", "token")
 
     def validate_password(self, data):
         # get the password from the data
@@ -147,6 +152,7 @@ class CollectionSignupSerializer(serializers.ModelSerializer):
         return email
 
     def create(self, validated_data):
+        validated_data["username"] = random_username()
         validated_data["password"] = make_password(validated_data.get("password"))
         return super(CollectionSignupSerializer, self).create(validated_data)
 
@@ -154,19 +160,11 @@ class CollectionSignupSerializer(serializers.ModelSerializer):
         tokens = RefreshToken.for_user(user)
         refresh = str(tokens)
         access = str(tokens.access_token)
-        data = {
-            "refresh": refresh,
-            "access": access
-        }
+        data = {"refresh": refresh, "access": access}
         return data
 
-class CollectionSerializer(serializers.ModelSerializer):
 
+class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collection
-        fields = (
-            "phone_number",
-            "email",
-            "name",
-            "webhook"
-        )
+        fields = ("email", "name", "webhook")
