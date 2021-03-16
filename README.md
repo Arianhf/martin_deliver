@@ -7,4 +7,4 @@
 6. ./manage.py createsuperuser
 7. ./manage.py makemigrations && ./manage.py migrate
 8. ./manage.py runserver 8000
-9. import postman collections and environment
+9. import postman collections
