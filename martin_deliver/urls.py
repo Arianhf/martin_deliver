@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt import views as jwt_views
-
+from martin_deliver.delivery.views import EmailTokenObtainPairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('delivery/', include("martin_deliver.delivery.urls")),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path("api/token/", EmailTokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/refresh/", jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
 ]
