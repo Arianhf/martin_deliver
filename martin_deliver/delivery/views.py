@@ -9,7 +9,9 @@ from .serializers import (
     PackageSerializer
 )
 from rest_framework import status, permissions, mixins, generics
-from .permissions import IsCollection, IsOwner
+from .permissions import IsCollection, IsOwner, IsCourier
+from django.db.models import Q
+
 
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -57,7 +59,6 @@ class PackageCreate(mixins.CreateModelMixin, generics.GenericAPIView):
         self.serializer.user = request.user
         return self.create(request, *args, **kwargs)
 
-    
 class PackageCancel(generics.UpdateAPIView):
     queryset = Package.objects.all()
     serializer_class = PackageSerializer
@@ -66,4 +67,53 @@ class PackageCancel(generics.UpdateAPIView):
 
     def update(self, request, *args, **kwargs):
         request.data['status'] = DeliveryStatus.CANCELED
+        return super().update(request, *args, **kwargs)
+
+class PackageList(mixins.ListModelMixin, generics.GenericAPIView):
+    queryset = Package.objects.filter(status=DeliveryStatus.PENDING)
+    serializer_class = PackageSerializer
+    permission_classes = [IsCourier]
+
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+class PackageAccept(generics.UpdateAPIView):
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
+    lookup_field = "slug" 
+    permission_classes = [IsCourier]
+
+    def update(self, request, *args, **kwargs):
+        request.data['status'] = DeliveryStatus.ACCEPTED
+        return super().update(request, *args, **kwargs)
+
+class PackageReceived(generics.UpdateAPIView):
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
+    lookup_field = "slug" 
+    permission_classes = [IsCourier]
+
+    def update(self, request, *args, **kwargs):
+        request.data['status'] = DeliveryStatus.RECEIVED
+        return super().update(request, *args, **kwargs)
+
+class PackageDelivered(generics.UpdateAPIView):
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
+    lookup_field = "slug" 
+    permission_classes = [IsCourier]
+
+    def update(self, request, *args, **kwargs):
+        request.data['status'] = DeliveryStatus.DELIVERED
+        return super().update(request, *args, **kwargs)
+
+class PackageOnWay(generics.UpdateAPIView):
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
+    lookup_field = "slug" 
+    permission_classes = [IsCourier]
+
+    def update(self, request, *args, **kwargs):
+        request.data['status'] = DeliveryStatus.ON_WAY
         return super().update(request, *args, **kwargs)
