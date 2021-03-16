@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from martin_deliver.delivery.models import Courier, Collection
+from martin_deliver.delivery.models import Courier, Collection, Package
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -8,7 +8,8 @@ from django.core import exceptions
 from rest_framework_simplejwt.tokens import RefreshToken
 import random
 import string
-
+from rest_framework_simplejwt.serializers import TokenObtainSerializer
+from rest_framework.fields import CurrentUserDefault
 
 def random_username():
     return "".join(
@@ -18,6 +19,32 @@ def random_username():
         for _ in range(12)
     )
 
+def get_user(self):
+    user = None
+    request = self.context.get("request")
+    if request and hasattr(request, "user"):
+        user = request.user
+    return user
+
+########### EMAIL AUTH WITH JWT ################
+
+class EmailTokenObtainSerializer(TokenObtainSerializer):
+    username_field = User.EMAIL_FIELD
+
+class CustomTokenObtainPairSerializer(EmailTokenObtainSerializer):
+    @classmethod
+    def get_token(cls, user):
+        return RefreshToken.for_user(user)
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        refresh = self.get_token(self.user)
+
+        data["refresh"] = str(refresh)
+        data["access"] = str(refresh.access_token)
+
+        return data
 
 class CourierSignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
@@ -40,14 +67,13 @@ class CourierSignupSerializer(serializers.ModelSerializer):
             "last_name",
             "password",
             "token",
-            "username"
+            "username",
         )
         extra_kwargs = {
             "first_name": {"required": True},
             "last_name": {"required": True},
             "email": {"required": True},
         }
-
 
     def validate_password(self, data):
         # get the password from the data
@@ -169,4 +195,29 @@ class CollectionSignupSerializer(serializers.ModelSerializer):
 class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collection
-        fields = ("email", "name", "webhook")
+        fields = ("email", "name", "webhook_link")
+
+
+class PackageCreateSerializer(serializers.ModelSerializer):
+    sender = CollectionSerializer(required=False)
+    class Meta:
+        model=Package
+        fields = (
+            "sender_phone_number",
+            "sender_name",
+            "receiver_phone_number",
+            "receiver_name",
+            "origin_long",
+            "origin_lat",
+            "origin_address",
+            "destination_long",
+            "destination_lat",
+            "destination_address",
+            "slug",
+            "sender",
+        )
+
+    def create(self, validated_data):
+        validated_data["sender"] = Collection.objects.get(email=get_user(self).email)
+        return super(PackageCreateSerializer, self).create(validated_data)
+

@@ -73,7 +73,6 @@ class Courier(User):
         unique=True
     )
 
-
 class Collection(User):
     name = models.CharField(
         max_length=255,
