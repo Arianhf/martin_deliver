@@ -1,5 +1,5 @@
 from rest_framework.permissions import BasePermission
-from .models import Collection
+from .models import Collection, Package
 
 class IsCollection(BasePermission):
     """
@@ -16,3 +16,15 @@ class IsCollection(BasePermission):
             request.user.is_authenticated and
             collection
         )
+
+class IsOwner(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if isinstance(obj, Package):
+            try:
+                collection = Collection.objects.get(email=request.user.email)
+            except:
+                collection = None
+        
+            return obj.sender == collection
+        else:
+            return True
